@@ -10,7 +10,7 @@
     "gulp-symlink": "^0.4.1"
   },
   "scripts": {
-    "postinstall": "gulp hook"
+    "hooks": "chmod +x hooks/*; cd .git/hooks && ln -sf ../../hooks/* ."
   },
   "author": "Rifat Nabi",
   "license": "MIT"
