@@ -7,10 +7,10 @@
     "gulp-jshint": "^1.5.0",
     "jshint-stylish": "^0.1.5",
     "map-stream": "^0.1.0",
-    "gulp-symlink": "^0.4.1"
+    "gulp-shell": "^0.2.9"
   },
   "scripts": {
-    "hooks": "chmod +x hooks/*; cd .git/hooks && ln -sf ../../hooks/* ."
+    "postinstall": "gulp hook"
   },
   "author": "Rifat Nabi",
   "license": "MIT"

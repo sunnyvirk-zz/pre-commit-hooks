@@ -3,8 +3,12 @@
 var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	map = require('map-stream'),
-	symlink = require('gulp-symlink');
+	shell = require('gulp-shell');
 
+
+// lint task to check all script files
+// use .jshintrc and jshint-stylish
+// and error Reporter
 gulp.task('lint', function () {
 	return gulp.src('app/scripts/**/*.js')
     	.pipe(jshint('.jshintrc'))
@@ -12,11 +16,13 @@ gulp.task('lint', function () {
     	.pipe(errorReporter());
 });
 
-gulp.task('hook', function () {
-	return gulp.src('.pre-commit')
-		.pipe(symlink('.git/hooks/', 'pre-commit'));
-});
+// make hook file's executable and symlink hook files to .git/hooks
+gulp.task('hook', shell.task([
+	'chmod +x hooks/*; cd .git/hooks && ln -sf ../../hooks/* .'
+]))
 
+// errorReport helper function
+// returns 1 if a error is found
 var errorReporter = function () {
 	return map(function (file, cb) {
 		if (!file.jshint.success) {
