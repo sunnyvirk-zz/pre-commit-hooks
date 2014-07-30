@@ -5,4 +5,9 @@ then
   ./node_modules/.bin/gulp lint
 fi
 
+if git diff --cached --name-only --diff-filter=ACM | grep '.scss$' >/dev/null 2>&1
+then
+  ./node_modules/.bin/gulp scss-lint
+fi
+
 exit $?
