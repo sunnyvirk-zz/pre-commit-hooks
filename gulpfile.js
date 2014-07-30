@@ -1,6 +1,5 @@
 'use strict';
 
-
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var map = require('map-stream');
@@ -38,7 +37,7 @@ gulp.task('hook', shell.task([
 
 var paths = {
     scss: 'app/scss/'
-}
+};
 
 gulp.task('scss-lint', shell.task([
     'scss-lint ' + paths.scss + ' -c .scss-lint.yml'
