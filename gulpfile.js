@@ -36,7 +36,7 @@ gulp.task('hook', shell.task([
 ]));
 
 var paths = {
-    scss: 'app/scss/'
+    scss: 'app/scss/*.scss'
 };
 
 gulp.task('scss-lint', shell.task([
